@@ -1,8 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 SCRIPT_DIR=$(dirname $0)
 
 function prerequisite {
-  # check for git
+  ERRORS=0
   if [ -z "$(which git)" ]
   then
     echo "Please install GIT"
