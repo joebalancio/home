@@ -21,6 +21,12 @@ function prerequisite {
     ERRORS=$(($ERRORS + 1))
   fi
 
+  if [ -z "$(which pip)" ]
+  then
+    echo "Please install PIP"
+    ERRORS=$(($ERRORS + 1))
+  fi
+
   if [ "$ERRORS" -gt 0 ]
   then
     echo "Errors found: $ERRORS"
@@ -58,6 +64,14 @@ EOF
   fi
 }
 
+function powerline_install {
+  if [ -z $(pip freeze 2>/dev/null | grep Powerline) ]
+  then
+    echo "Installing Powerline"
+    pip install --user git+git://github.com/Lokaltog/powerline
+  fi
+}
+
 function tmux_download {
   if [ ! -d "$HOME/projects/tmux-powerline" ]
   then
@@ -80,7 +94,9 @@ EOF
   
   if [ ! -f $HOME/.tmux.conf ]
   then
-    cp $SCRIPT_DIR/.tmux.conf $HOME
+    POWERLINE_DIR=$(find ~ -name powerline -type d)
+    POWERLINE_TMUX_CONF="$POWERLINE_DIR/binding/tmux/powerline.conf"
+    sed "s|POWERLINEBINDING|$POWERLINE_TMUX_CONF|" $SCRIPT_DIR/.tmux_conf > $HOME/.tmux_conf
   fi
   
   if [ ! -f $HOME/.tmux-powerlinerc ]
@@ -108,6 +124,7 @@ function vim_personalize {
 # MAIN
 prerequisite
 setup
+powerline_install
 tmux_download
 tmux_personalize
 vim_download
