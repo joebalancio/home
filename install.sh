@@ -94,9 +94,8 @@ EOF
   
   if [ ! -f $HOME/.tmux.conf ]
   then
-    POWERLINE_DIR=$(find ~ -name powerline -type d)
-    POWERLINE_TMUX_CONF="$POWERLINE_DIR/binding/tmux/powerline.conf"
-    sed "s|POWERLINEBINDING|$POWERLINE_TMUX_CONF|" $SCRIPT_DIR/.tmux_conf > $HOME/.tmux_conf
+    POWERLINE_TMUX_CONF=$(find ~ -name 'powerline.conf' -type f)
+    sed "s|POWERLINEBINDING|$POWERLINE_TMUX_CONF|" <$SCRIPT_DIR/.tmux.conf >$HOME/.tmux.conf
   fi
   
   if [ ! -f $HOME/.tmux-powerlinerc ]
