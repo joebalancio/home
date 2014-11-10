@@ -31,6 +31,7 @@ function prerequisite {
   then
     echo "Errors found: $ERRORS"
     echo "Please fix them before continuing"
+    exit 1
   fi
 }
 
