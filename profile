@@ -14,3 +14,5 @@ do
   echo "sourcing $(basename $file)"
   source $file
 done
+
+export PROFILE_LOADED=1

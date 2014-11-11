@@ -44,7 +44,7 @@ function setup {
 }
 
 function profile_personalize {
-  if [ -z "$CUSTOMIZED_HOME" ]
+  if [ -z "$PROFILE_LOADED" ]
   then
     echo "Customizing Bash"
     cat <<- EOF >> $HOME/.profile
@@ -119,5 +119,5 @@ powerline_install
 git_source_download
 profile_personalize
 tmux_personalize
-#vim_download
-#vim_personalize
+vim_download
+vim_personalize
