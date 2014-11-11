@@ -10,7 +10,6 @@ export EDITOR=vim
 # Sourcing
 for file in $DIR/resources/*.bash
 do
-  echo "sourcing $(basename $file)"
   source $file
 done
 
