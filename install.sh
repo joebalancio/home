@@ -1,5 +1,5 @@
 #!/bin/bash
-SCRIPT_DIR=$(dirname $0)
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 function prerequisite {
   ERRORS=0
@@ -43,44 +43,27 @@ function setup {
   fi
 }
 
-function bash_personalize {
-  if [ -z "$(cat $CLICOLOR | grep 1)" ]
+function profile_personalize {
+  if [ -z "$CUSTOMIZED_HOME" ]
   then
-    echo "Colorizing CLI"
-    cat <<- 'EOF' >> $HOME/.bashrc
+    echo "Customizing Bash"
+    cat <<- EOF >> $HOME/.profile
 
-# CLI Colors
-export CLICOLOR=1
+# Customized for github.com/joebalancio/home
+. $SCRIPT_DIR/profile
 EOF
+    . $SCRIPT_DIR/profile
   fi
 
-  if [ -z "$(cat $LSCOLORS)" ]
-  then
-    echo "Colorizing LS"
-    cat <<- 'EOF' >> $HOME/.bashrc
-
-# LS Colors
-export LSCOLORS=ExxxxxDxBxegedabxxacad
-EOF
-  fi
 }
 
 function powerline_install {
-  if [ -z $(pip freeze 2>/dev/null | grep Powerline) ]
+  if [ -z $(pip freeze 2>/dev/null | grep powerline-status) ]
   then
     echo "Installing Powerline"
     pip install --user git+git://github.com/Lokaltog/powerline
   fi
 }
-
-function tmux_download {
-  if [ ! -d "$HOME/projects/tmux-powerline" ]
-  then
-    echo "Cloning erikw/tmux-powerline"
-    git clone https://github.com/erikw/tmux-powerline.git $HOME/projects/tmux-powerline
-  fi
-}
-
 
 function tmux_personalize {
   if [ -z "$(cat $HOME/.bashrc | grep PS1 | grep tmux)" ]
@@ -121,11 +104,20 @@ function vim_personalize {
   fi
 }
 
+function git_source_download {
+  if [ ! -d "$HOME/projects/git" ]
+  then
+    echo "Cloning git/git"
+    git clone https://github.com/git/git.git $HOME/projects/git
+  fi
+}
+
 # MAIN
 prerequisite
 setup
 powerline_install
-tmux_download
+git_source_download
+profile_personalize
 tmux_personalize
-vim_download
-vim_personalize
+#vim_download
+#vim_personalize
