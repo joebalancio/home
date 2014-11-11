@@ -61,30 +61,22 @@ function powerline_install {
   if [ -z $(pip freeze 2>/dev/null | grep powerline-status) ]
   then
     echo "Installing Powerline"
-    pip install --user git+git://github.com/Lokaltog/powerline
+    pip install --user powerline-status
+  fi
+
+  if ! hash powerline-daemon
+  then
+    git clone https://github.com/kovidgoyal/powerline-daemon.git $HOME/projects/powerline-daemon
+    cd  $HOME/projects/powerline-daemon
+    gcc -O3 powerline-client.c -o powerline-client
   fi
 }
 
 function tmux_personalize {
-  if [ -z "$(cat $HOME/.bashrc | grep PS1 | grep tmux)" ]
-  then
-    echo 'Updating bashrc for tmux'
-    cat <<- 'EOF' >> $HOME/.bashrc
-
-# tmux-powerline fix for vcs and pwd integration
-PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
-EOF
-  fi
-  
   if [ ! -f $HOME/.tmux.conf ]
   then
-    POWERLINE_TMUX_CONF=$(find ~ -name 'powerline.conf' -type f)
-    sed "s|POWERLINEBINDING|$POWERLINE_TMUX_CONF|" <$SCRIPT_DIR/.tmux.conf >$HOME/.tmux.conf
-  fi
-  
-  if [ ! -f $HOME/.tmux-powerlinerc ]
-  then
-    cp $SCRIPT_DIR/.tmux-powerlinerc $HOME
+    POWERLINE_TMUX_CONF=$(pip show powerline-status | grep Location | cut -d ' ' -f 2)/powerline/bindings/tmux/powerline.conf
+    sed "s|POWERLINEBINDING|$POWERLINE_TMUX_CONF|" <$SCRIPT_DIR/tmux.conf >$HOME/.tmux.conf
   fi
 }
 
