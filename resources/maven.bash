@@ -2,6 +2,11 @@
 # Maven
 ##
 
+if ! hash mvn 2> /dev/null
+then
+  return
+fi
+
 export MAVEN_OPTS="-Xmx2048m -XX:MaxPermSize=512m"
 
 function m() {

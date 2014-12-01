@@ -1,3 +1,8 @@
+if [ -n "$ZSH_VERSION" ]
+then
+  return
+fi
+
 # Git
 [[ -s $HOME/projects/git/contrib/completion/git-prompt.sh ]] && source $HOME/projects/git/contrib/completion/git-prompt.sh
 [[ -s $HOME/projects/git/contrib/completion/git-completion.bash ]] && source $HOME/projects/git/contrib/completion/git-completion.bash

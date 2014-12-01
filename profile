@@ -1,11 +1,23 @@
 #!/bin/bash
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+if [ ! -z $BASH_SOURCE ]
+then
+  DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+else
+  DIR="$( cd "$( dirname "$0" )" && pwd )"
+fi
 
 # RVM
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
 
 # Editor
 export EDITOR=vim
+
+if [ -d "/vagrant" ]
+then
+  export IS_VAGRANT=1
+else
+  export IS_VAGRANT=0
+fi
 
 # Sourcing
 for file in $DIR/resources/*.bash

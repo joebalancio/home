@@ -46,13 +46,25 @@ function setup {
 function profile_personalize {
   if [ -z "$PROFILE_LOADED" ]
   then
-    echo "Customizing Bash"
-    cat <<- EOF >> $HOME/.profile
+    if [ -n "$BASH_VERSION" ]
+    then
+      echo "Customizing Bash"
+      cat <<- EOF >> $HOME/.profile
 
 # Customized for github.com/joebalancio/home
 . $SCRIPT_DIR/profile
 EOF
-    . $SCRIPT_DIR/profile
+      . $SCRIPT_DIR/profile
+    elif [ -n "$ZSH_VERSION" ]
+    then
+      echo "Customizing Zsh"
+      cat <<- EOF >> $HOME/.zshrc
+
+# Customized for github.com/joebalancio/home
+. $SCRIPT_DIR/profile
+EOF
+      . $SCRIPT_DIR/profile
+    fi
   fi
 
 }
@@ -64,12 +76,6 @@ function powerline_install {
     pip install --user powerline-status
   fi
 
-  if ! hash powerline-daemon
-  then
-    git clone https://github.com/kovidgoyal/powerline-daemon.git $HOME/projects/powerline-daemon
-    cd  $HOME/projects/powerline-daemon
-    gcc -O3 powerline-client.c -o powerline-client
-  fi
 }
 
 function tmux_personalize {

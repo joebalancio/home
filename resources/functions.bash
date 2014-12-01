@@ -1,5 +1,5 @@
 function localtmux() {
-  tmux -v attach -t local || tmux -v new -s local
+  tmux attach -t local || tmux new -s local
 }
 
 function parse_git_branch() {
