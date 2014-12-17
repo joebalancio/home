@@ -81,8 +81,10 @@ function powerline_install {
 function tmux_personalize {
   if [ ! -f $HOME/.tmux.conf ]
   then
-    POWERLINE_TMUX_CONF=$(pip show powerline-status | grep Location | cut -d ' ' -f 2)/powerline/bindings/tmux/powerline.conf
-    sed "s|POWERLINEBINDING|$POWERLINE_TMUX_CONF|" <$SCRIPT_DIR/tmux.conf >$HOME/.tmux.conf
+    ARCH=$(uname | tr '[:upper:]' '[:lower:]')
+    SITE_PACKAGES_DIR=$(python -m site --user-site)
+    POWERLINE_TMUX_CONF=$SITE_PACKAGES_DIR/powerline/bindings/tmux/powerline.conf
+    sed "s|POWERLINEBINDING|$POWERLINE_TMUX_CONF|" <$SCRIPT_DIR/tmux.conf.$ARCH >$HOME/.tmux.conf
   fi
 }
 
