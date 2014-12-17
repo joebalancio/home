@@ -1,11 +1,6 @@
-if [ -n "$ZSH_VERSION" ]
-then
-  return
-fi
-
 # Git
 [[ -s $HOME/projects/git/contrib/completion/git-prompt.sh ]] && source $HOME/projects/git/contrib/completion/git-prompt.sh
-[[ -s $HOME/projects/git/contrib/completion/git-completion.bash ]] && source $HOME/projects/git/contrib/completion/git-completion.bash
+[[ -s $HOME/projects/git/contrib/completion/git-completion.bash && -n "$BASH_VERSION" ]] && source $HOME/projects/git/contrib/completion/git-completion.bash
 export GIT_PS1_SHOWCOLORHINTS=1
 export GIT_PS1_SHOWUPSTREAM="verbose name git" #auto|verbose|name|legact|git|svn
 export GIT_PS1_SHOWDIRTYSTATE=1
