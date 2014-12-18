@@ -62,7 +62,7 @@ setw -g allow-rename off
 new-window -t 100 
 
 # Setup BC window
-new-window -t 10 -c ~/projects/buildingconnected/BC
+new-window -t 10 -c /mnt/BC
 rename-window -t 10 'BuildingConnected'
 run 'tmux select-pane -t #{session_name}:10.1 || tmux split-window -d -t #{session_name}:10.0 -c ~/projects/buildingconnected/BC'
 run 'tmux select-pane -t #{session_name}:10.2 || tmux split-window -d -t #{session_name}:10.1 -c ~/projects/buildingconnected/BC'
