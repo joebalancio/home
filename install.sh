@@ -75,7 +75,15 @@ function powerline_install {
     echo "Installing Powerline"
     pip install --user powerline-status
   fi
+}
 
+function powerline_customize {
+  mkdir -p $HOME/.config
+  powerline_config_dir=$HOME/.config/powerline
+  if [ ! -L "$powerline_config_dir" ]
+  then
+    ln -s $SCRIPT_DIR/custom/powerline $powerline_config_dir
+  fi
 }
 
 function tmux_personalize {
@@ -113,11 +121,12 @@ function git_source_download {
 }
 
 # MAIN
-prerequisite
-setup
-powerline_install
-git_source_download
-profile_personalize
-tmux_personalize
-vim_download
-vim_personalize
+#prerequisite
+#setup
+#powerline_install
+powerline_customize
+#git_source_download
+#profile_personalize
+#tmux_personalize
+#vim_download
+#vim_personalize
