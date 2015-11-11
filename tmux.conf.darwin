@@ -24,6 +24,9 @@ source POWERLINEBINDING
 # Increase history
 set -g history-limit 10000
 
+# Increase status interval (default 15)
+set -g status-interval 60
+
 # Reload config
 bind-key r source-file ~/.tmux.conf \; display "Config reloaded!"
 
