@@ -7,3 +7,7 @@ function parse_git_branch() {
   echo "("${ref#refs/heads/}")"
 }
 
+function delorig () {
+  find . -type f -name '*.orig' -exec rm -f {} \;
+}
+
