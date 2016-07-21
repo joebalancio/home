@@ -6,3 +6,4 @@ alias l='ls -CF'
 # Neovim Takeover!
 alias vim="nvim"
 alias vi="nvim"
+alias v="nvim" # Super lazy

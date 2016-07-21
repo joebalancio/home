@@ -8,7 +8,8 @@ export GIT_PS1_SHOWUPSTREAM="auto" #auto|verbose|name|legact|git|svn
 #export GIT_PS1_SHOWUNTRACKEDFILES=1
 #export GIT_PS1_DESCRIBE_STYLE="branch" #contains|branch|describe|default
 
-if hash hub
+if hash hub > /dev/null
 then
   eval "$(hub alias -s)"
+  alias prdev='git pull-request -a joebalancio -b dev'
 fi

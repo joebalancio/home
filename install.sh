@@ -120,13 +120,21 @@ function git_source_download {
   fi
 }
 
+function git_personalize {
+  if [ ! -L $HOME/.gitconfig ]
+  then
+    ln -s $SCRIPT_DIR/gitconfig $HOME/.gitconfig
+  fi
+}
+
 # MAIN
 #prerequisite
 #setup
 #powerline_install
-powerline_customize
+# powerline_customize
 #git_source_download
 #profile_personalize
 #tmux_personalize
 #vim_download
 #vim_personalize
+git_personalize

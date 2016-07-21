@@ -9,9 +9,6 @@ fi
 # RVM
 [[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
 
-# Editor
-export EDITOR=vim
-
 if [ -d "/vagrant" ]
 then
   export IS_VAGRANT=1
