@@ -20,10 +20,10 @@ root: ~/
 # tmux_command: byobu
 
 # Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
-# startup_window: editor
+startup_window: Servers
 
 # Specitifes (by index) which pane of the specified window will be selected on project startup. If not set, the first pane is used.
-# startup_pane: 1
+startup_pane: 0
 
 # Controls whether the tmux session should be attached to automatically. Defaults to true.
 # attach: false
@@ -31,45 +31,40 @@ root: ~/
 # Runs after everything. Use it to attach to tmux with custom options etc.
 # post: tmux -CC attach -t bc
 
+
 windows:
     - Servers:
         layout: even-horizontal
         panes:
-            - server:
-                - cd ~/projects/buildingconnected/BC
-                - clear
-            - client:
-                - cd ~/projects/buildingconnected/client
-                - clear
-            - printer:
-                - cd ~/projects/buildingconnected/printer
-                - clear
+            - cd ~/projects/buildingconnected/BC
+            - cd ~/projects/buildingconnected/client
+            - cd ~/projects/buildingconnected/printer
     - Env:
         layout: even-horizontal
         panes:
             - repo:
                 - cd ~/projects/buildingconnected/env
                 - nvim
-            - docker:
-                - cd ~/projects/buildingconnected/env
-                - clear
+            - cd ~/projects/buildingconnected/env
     - Client:
         layout: main-vertical
         panes:
             - editor:
                 - cd ~/projects/buildingconnected/client
                 - nvim
-            - shell:
-                - cd ~/projects/buildingconnected/client
-                - clear
+            - cd ~/projects/buildingconnected/client
     - BC:
         layout: main-vertical
         panes:
             - editor:
                 - cd ~/projects/buildingconnected/BC
                 - nvim
-            - shell:
-                - cd ~/projects/buildingconnected/BC
+            - cd ~/projects/buildingconnected/BC
     - Merge:
     - Deploy:
     - Playground:
+        pre:
+            - tmux resize-pane -t 2.1 -x 70 # Sets the Client side pane to 70 width
+            - tmux resize-pane -t 3.1 -x 70 # Sets the BC side pane to 70 width
+        panes:
+            - #empty
