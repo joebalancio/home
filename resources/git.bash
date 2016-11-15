@@ -12,4 +12,5 @@ if hash hub > /dev/null
 then
   eval "$(hub alias -s)"
   alias prdev='git pull-request -a joebalancio -b dev'
+  source $HOME/projects/hub/etc/hub.bash_completion.sh
 fi
