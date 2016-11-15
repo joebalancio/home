@@ -11,6 +11,19 @@
 					"format": "%H:%M",
 					"istime": true
 				}
+			},
+			{
+				"function": "powerline.segments.common.bat.battery",
+        "args": {
+          "gamify": true
+        }
+			},
+			{
+				"function": "powerline.segments.common.net.network_load",
+        "args": {
+          "interface": "auto",
+          "si_prefix": true
+        }
 			}
 		]
 	}
