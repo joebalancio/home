@@ -93,6 +93,8 @@ function tmux_personalize {
     SITE_PACKAGES_DIR=$(python -m site --user-site)
     POWERLINE_TMUX_CONF=$SITE_PACKAGES_DIR/powerline/bindings/tmux/powerline.conf
     sed "s|POWERLINEBINDING|$POWERLINE_TMUX_CONF|" <$SCRIPT_DIR/tmux.conf.$ARCH >$HOME/.tmux.conf
+    ln -s $SCRIPT_DIR/tmuxinator $HOME/.tmuxinator
+    gem install tmuxinator
   fi
 }
 
@@ -134,7 +136,7 @@ function git_personalize {
 # powerline_customize
 #git_source_download
 #profile_personalize
-#tmux_personalize
+tmux_personalize
 #vim_download
 #vim_personalize
 git_personalize
