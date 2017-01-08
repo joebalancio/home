@@ -1,0 +1,87 @@
+{
+  "session_name": "bc",
+  "windows": [
+    {
+      "focus": true,
+      "layout": "even-horizontal",
+      "panes": [
+        "cd ~/projects/buildingconnected/BC",
+        "cd ~/projects/buildingconnected/printer",
+        "cd ~/projects/buildingconnected/client"
+      ],
+      "window_name": "Servers"
+    },
+    {
+      "layout": "even-horizontal",
+      "panes": [
+        "nvim",
+        null
+      ],
+      "shell_command_before": [
+        "cd ~/projects/buildingconnected/env"
+      ],
+      "window_name": "Env"
+    },
+    {
+      "layout": "main-vertical",
+      "options": {
+        "other-pane-width": 80
+      },
+      "panes": [
+        {
+          "focus": true,
+          "shell_command": "nvim"
+        },
+        null,
+        null
+      ],
+      "shell_command_before": [
+        "cd ~/projects/buildingconnected/client"
+      ],
+      "window_name": "Client"
+    },
+    {
+      "layout": "main-vertical",
+      "options": {
+        "other-pane-width": 80
+      },
+      "panes": [
+        {
+          "focus": true,
+          "shell_command": "nvim"
+        },
+        null,
+        null
+      ],
+      "shell_command_before": [
+        "cd ~/projects/buildingconnected/BC"
+      ],
+      "window_name": "BC"
+    },
+    {
+      "panes": [
+        null
+      ],
+      "shell_command_before": [
+        "cd ~/projects/buildingconnected/BC"
+      ],
+      "window_name": "Merge"
+    },
+    {
+      "panes": [
+        null
+      ],
+      "window_name": "Deploy"
+    },
+    {
+      "panes": [
+        null
+      ],
+      "window_name": "Playground"
+    }
+  ],
+  "global_options": {
+    "base-index": 1,
+    "pane-base-index": 1
+  }
+}
