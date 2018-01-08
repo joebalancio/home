@@ -2,4 +2,5 @@
 # Node Version Manager (NVM)
 ##
 
-source $HOME/.nvm/nvm.sh
+export NVM_DIR="/home/pi/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
