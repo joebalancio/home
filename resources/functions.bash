@@ -11,3 +11,7 @@ function delorig () {
   find . -type f -name '*.orig' -exec rm -f {} \;
 }
 
+
+function ppgrep() {
+  pgrep "$@" | xargs ps -fp 2> /dev/null;
+}
