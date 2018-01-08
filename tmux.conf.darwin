@@ -10,6 +10,10 @@ bind h select-pane -L
 bind j select-pane -D
 bind k select-pane -U
 bind l select-pane -R
+bind c-h select-pane -L
+bind c-j select-pane -D
+bind c-k select-pane -U
+bind c-l select-pane -R
 bind-key -Tcopy-mode-vi 'v' send -X begin-selection
 bind-key -Tcopy-mode-vi 'y' send -X copy-pipe-and-cancel pbcopy
 
@@ -23,10 +27,15 @@ set -g history-limit 10000
 # More intuitive splits
 bind-key | split-window -h -c "#{pane_current_path}"
 bind-key - split-window -v -c "#{pane_current_path}"
+bind-key 'c-\' split-window -h -c "#{pane_current_path}"
+bind-key c-_ split-window -v -c "#{pane_current_path}"
 
-# Acutally use prefix
-bind-key ` last-window
-bind-key a send-prefix
+bind-key space last-window
+bind-key c-space last-window
+bind-key c-p previous-window
+bind-key c-n next-window
+bind-key c-q kill-server
+bind-key c-m resize-pane -Z
 
 # Resize panes
 # I helps to flip the Capslock on
@@ -45,6 +54,9 @@ set-option -g visual-bell off
 # Pane Styles
 set-option -g -a pane-border-style "fg=colour10,bg=black"
 set-option -g pane-active-border-style "fg=colour09,bg=colour10"
+
+# TERM
+set-option -g default-terminal "screen-256color"
 
 # Remove ESC delay
 set -s escape-time 0
