@@ -3,19 +3,19 @@
   "windows": [
     {
       "focus": true,
-      "layout": "even-horizontal",
+      "layout": "even-vertical",
       "panes": [
         "cd ~/projects/buildingconnected/BC",
-        "cd ~/projects/buildingconnected/printer",
-        "cd ~/projects/buildingconnected/client"
+        "cd ~/projects/buildingconnected/client",
+        "cd ~/projects/buildingconnected/printer"
       ],
       "window_name": "Servers"
     },
     {
       "layout": "even-horizontal",
       "panes": [
-        "nvim",
-        null
+        null,
+        "docker ps && yarn start"
       ],
       "shell_command_before": [
         "cd ~/projects/buildingconnected/env"
@@ -23,16 +23,7 @@
       "window_name": "Env"
     },
     {
-      "layout": "main-vertical",
-      "options": {
-        "other-pane-width": 80
-      },
       "panes": [
-        {
-          "focus": true,
-          "shell_command": "nvim"
-        },
-        null,
         null
       ],
       "shell_command_before": [
@@ -41,16 +32,7 @@
       "window_name": "Client"
     },
     {
-      "layout": "main-vertical",
-      "options": {
-        "other-pane-width": 80
-      },
       "panes": [
-        {
-          "focus": true,
-          "shell_command": "nvim"
-        },
-        null,
         null
       ],
       "shell_command_before": [
@@ -63,19 +45,22 @@
         null
       ],
       "shell_command_before": [
-        "cd ~/projects/buildingconnected/BC"
+        "cd ~/projects/buildingconnected/stanbot"
       ],
-      "window_name": "Merge"
+      "window_name": "Stanbot"
     },
     {
       "panes": [
         null
       ],
-      "window_name": "Deploy"
+      "window_name": "Heroku"
     },
     {
       "panes": [
-        null
+        {
+          "focus": true,
+          "shell_command": "node"
+        }
       ],
       "window_name": "Playground"
     }
