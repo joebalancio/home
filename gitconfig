@@ -1,12 +1,13 @@
 [user]
-	name = Joseph Balancio
+	name = Joe Balancio
 	email = jlbalancio@gmail.com
 [push]
 	default = simple
 [filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
 	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
 [merge]
   tool = vimdiff
 [mergetool]
@@ -25,3 +26,6 @@
   editor = nvim
 [alias]
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[github]
+	oauth-token = 3ad993c4b12bca9b1ce2cd8273ad38a26d897814
+	user = joebalancio
