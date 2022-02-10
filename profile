@@ -1,4 +1,3 @@
-#!/bin/bash
 if [ ! -z $BASH_SOURCE ]
 then
   DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -16,10 +15,14 @@ else
   export IS_VAGRANT=0
 fi
 
-# Sourcing
-for file in $DIR/resources/*.bash
-do
-  source $file
-done
+# Sourcing ZSH files
+if [ -n "`$SHELL -c 'echo $ZSH_VERSION'`" ]
+then
+  echo "Sourcing ZSH resource files"
+  for file in $DIR/resources/*.zsh
+  do
+    source $file
+  done
+fi
 
 export PROFILE_LOADED=1
