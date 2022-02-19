@@ -1,6 +1,6 @@
 session_name: bc
 global_options:
-  base-index: 1,
+  base-index: 1
   pane-base-index: 1
 windows:
 - layout: even-horizontal
