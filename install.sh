@@ -39,7 +39,7 @@ function setup {
   if [ ! -d "$HOME/projects" ]
   then
     echo "Creating projects directory"
-    mkdir $HOME/projects
+    mkdir -p $HOME/projects
   fi
 }
 
