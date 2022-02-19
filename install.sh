@@ -130,6 +130,13 @@ function fzf_install {
   fi
 }
 
+function nvm_install {
+  if [ ! -f "$HOME/.nvm/nvm.sh" ]
+  then
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+  fi
+}
+
 # MAIN
 prerequisite
 setup
@@ -142,3 +149,4 @@ tmux_personalize
 #vim_personalize
 # git_personalize
 fzf_install
+nvm_install
