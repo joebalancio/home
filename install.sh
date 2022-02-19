@@ -123,6 +123,10 @@ function git_personalize {
   fi
 }
 
+function fzf_install {
+  brew install fzf
+}
+
 # MAIN
 prerequisite
 setup
@@ -134,3 +138,4 @@ tmux_personalize
 #vim_download
 #vim_personalize
 # git_personalize
+fzf_install
