@@ -124,7 +124,10 @@ function git_personalize {
 }
 
 function fzf_install {
-  brew install fzf
+  if ! hash fzf
+  then
+    brew install fzf
+  fi
 }
 
 # MAIN
