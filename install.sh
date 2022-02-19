@@ -1,7 +1,7 @@
 #!/bin/bash
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-PIP=pip3
+source ./install.config
 
 function prerequisite {
   ERRORS=0
