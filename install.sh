@@ -86,10 +86,8 @@ function tmux_personalize {
   if [ ! -f $HOME/.tmux.conf ]
   then
     ARCH=$(uname | tr '[:upper:]' '[:lower:]')
-    SITE_PACKAGES_DIR=$(python -m site --user-site)
-    POWERLINE_TMUX_CONF=$SITE_PACKAGES_DIR/powerline/bindings/tmux/powerline.conf
-    sed "s|POWERLINEBINDING|$POWERLINE_TMUX_CONF|" <$SCRIPT_DIR/tmux.conf.$ARCH >$HOME/.tmux.conf
-    pip install --user tmuxp
+    cp $SCRIPT_DIR/tmux.conf.$ARCH $HOME/.tmux.conf
+    $PIP install tmuxp
     ln -s $SCRIPT_DIR/tmuxp $HOME/.tmuxp
   fi
 }
@@ -132,7 +130,7 @@ powerline_install
 powerline_customize
 #git_source_download
 profile_personalize
-# tmux_personalize
+tmux_personalize
 #vim_download
 #vim_personalize
 # git_personalize

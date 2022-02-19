@@ -19,7 +19,7 @@ bind-key -Tcopy-mode-vi 'y' send -X copy-pipe-and-cancel pbcopy
 
 # Set statusbar
 run-shell "powerline-daemon -q"
-source POWERLINEBINDING
+source $TMUX_POWERLINE_PATH
 
 # Increase history
 set -g history-limit 10000

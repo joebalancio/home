@@ -15,7 +15,7 @@ bind-key -t vi-copy 'y' copy-selection
 
 # Set statusbar
 run-shell "powerline-daemon -q"
-source POWERLINEBINDING
+source $TMUX_POWERLINE_PATH
 
 # Increase history
 set -g history-limit 10000
