@@ -1,6 +1,8 @@
 #!/bin/bash
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+PIP=pip3
+
 function prerequisite {
   ERRORS=0
   if [ -z "$(which git)" ]
@@ -21,7 +23,7 @@ function prerequisite {
     ERRORS=$(($ERRORS + 1))
   fi
 
-  if [ -z "$(which pip3)" ]
+  if [ -z "$(which $PIP)" ]
   then
     echo "Please install PIP"
     ERRORS=$(($ERRORS + 1))
@@ -46,34 +48,28 @@ function setup {
 function profile_personalize {
   if [ -z "$PROFILE_LOADED" ]
   then
-    if [ -n "$BASH_VERSION" ]
+    if [ "$SHELL" == "/bin/zsh" ]
     then
-      echo "Customizing Bash"
-      cat <<- EOF >> $HOME/.profile
+      if ! grep "joebalancio/home" $HOME/.zshrc > /dev/null
+      then
+        echo "Customizing ZSH"
+        cat <<- EOF >> $HOME/.zshrc
 
 # Customized for github.com/joebalancio/home
 . $SCRIPT_DIR/profile
 EOF
-      . $SCRIPT_DIR/profile
-    elif [ -n "$ZSH_VERSION" ]
-    then
-      echo "Customizing Zsh"
-      cat <<- EOF >> $HOME/.zshrc
-
-# Customized for github.com/joebalancio/home
-. $SCRIPT_DIR/profile
-EOF
-      . $SCRIPT_DIR/profile
+        # . $SCRIPT_DIR/profile
+      fi
     fi
   fi
 
 }
 
 function powerline_install {
-  if [ -z $(pip freeze 2>/dev/null | grep powerline-status) ]
+  if [ -z "$($PIP show powerline-status 2>/dev/null)" ]
   then
     echo "Installing Powerline"
-    pip install --user powerline-status
+    $PIP install powerline-status
   fi
 }
 
@@ -130,13 +126,13 @@ function git_personalize {
 }
 
 # MAIN
-#prerequisite
-#setup
-#powerline_install
-# powerline_customize
+prerequisite
+setup
+powerline_install
+powerline_customize
 #git_source_download
-#profile_personalize
-tmux_personalize
+profile_personalize
+# tmux_personalize
 #vim_download
 #vim_personalize
-git_personalize
+# git_personalize
