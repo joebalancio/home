@@ -1,7 +1,1 @@
-# tmux
-#PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#D" | tr -d %) "$PWD")'
-
-# tmuxinator
-#[[ -s $HOME/projects/tmuxinator/completion/tmuxinator.bash ]] && source $HOME/projects/tmuxinator/completion/tmuxinator.bash
-#
-
+export TMUX_POWERLINE_PATH="$(pip3 show powerline-status | grep Location | cut -d' ' -f 2)/powerline/bindings/tmux/powerline.conf"
