@@ -21,7 +21,7 @@ function prerequisite {
     ERRORS=$(($ERRORS + 1))
   fi
 
-  if [ -z "$(which pip)" ]
+  if [ -z "$(which pip3)" ]
   then
     echo "Please install PIP"
     ERRORS=$(($ERRORS + 1))
