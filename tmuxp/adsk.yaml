@@ -1,6 +1,6 @@
 session_name: bc
 global_options:
-  base-index: 1,
+  base-index: 1
   pane-base-index: 1
 windows:
 - layout: even-horizontal
@@ -23,11 +23,10 @@ windows:
 
 - layout: even-vertical
   panes:
-  - cd /Users/joeb/projects/tradetapp/tradetapp-app-dev
+  - cd /Users/joeb/projects/tradetapp/tradetapp-restapi-dev
   - cd ~/projects/tradetapp/tradetapp-app-dev; nvm use 10.15.1
   window_name: T Servers
 - layout: even-horizontal
-  panes:
   start_directory: /Users/joeb/projects/tradetapp/tradetapp-app-dev
   window_name: T FE
 - layout: even-horizontal
