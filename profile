@@ -15,6 +15,8 @@ else
   export IS_VAGRANT=0
 fi
 
+export HOMEBREW_PREFIX=$(brew config | grep HOMEBREW_PREFIX | sed -e 's/.*: //')
+
 # Sourcing ZSH files
 if [ -n "`$SHELL -c 'echo $ZSH_VERSION'`" ]
 then
