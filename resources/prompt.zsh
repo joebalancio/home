@@ -15,6 +15,9 @@ setopt interactivecomments
 # Enable Ctrl-x-e to edit command line
 autoload -U edit-command-line
 
+# Prefer emacs-like bindings
+bindkey -A emacs main
+
 # Emacs key-bindings to edit command line
 zle -N edit-command-line
 bindkey '^xe' edit-command-line
