@@ -1,11 +1,11 @@
 session_name: personal
+start_directory: ~/
 global_options:
   base-index: 1
   pane-base-index: 1
 windows:
-- layout: even-horizontal
-  start_directory: ~/workspace/axie-infinity/contabo
-  window_name: Contabo
-- layout: even-horizontal
-  start_directory: ~/projects/jaxie-bot
-  window_name: Jaxie
+- window_name: Home
+- start_directory: projects/virl-app
+  window_name: V-IRL
+- start_directory: projects/friendtech-friendtown
+  window_name: FT
