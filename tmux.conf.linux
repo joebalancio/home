@@ -1,5 +1,5 @@
-# Use backtick for prefix
-set-option -g prefix `
+# Use space for prefix
+set-option -g prefix c-space
 
 # Create window with current path
 bind-key c new-window -c "#{pane_current_path}"
@@ -24,9 +24,12 @@ set -g history-limit 10000
 bind-key | split-window -h -c "#{pane_current_path}"
 bind-key - split-window -v -c "#{pane_current_path}"
 
-# Acutally use prefix
-bind-key ` last-window
-bind-key a send-prefix
+bind-key space last-window
+bind-key c-space last-window
+bind-key c-p previous-window
+bind-key c-n next-window
+bind-key c-q kill-server
+bind-key c-m resize-pane -Z
 
 # Resize panes
 # I helps to flip the Capslock on
@@ -35,15 +38,9 @@ bind-key K resize-pane -U 5
 bind-key H resize-pane -L 5
 bind-key L resize-pane -R 5
 
-# Mouse
-setw -g mouse on
-
 # Bells in current window
 set-option -g bell-action any
 set-option -g visual-bell off
-
-# Integrate OSX Pasteboard
-set-option -g default-command "reattach-to-user-namespace -l bash"
 
 # Pane Styles
 set-option -g -a pane-border-style "fg=colour10,bg=black"

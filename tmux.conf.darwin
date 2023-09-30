@@ -1,4 +1,4 @@
-# Use backtick for prefix
+# Use space for prefix
 set-option -g prefix c-space
 
 # Create window with current path
