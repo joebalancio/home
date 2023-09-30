@@ -6,4 +6,5 @@ if command -v pyenv 1>/dev/null 2>&1; then
 fi
 
 export PATH="$PATH:$HOME/.poetry/bin"
+export PATH="$PATH:$HOME/.local/bin"
 
